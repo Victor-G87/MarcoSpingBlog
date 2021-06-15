@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:replace="fragments/header :: main-header"/>
+</head>
+<body>
+
+<nav th:replace="fragments/navbar :: navbar"></nav>
+
+<div class="container">
+    <div class="card text-center text-white c-card mt-3">
+        <div class="card-header">Header</div>
+        <h1 th:text="${post.title}" class="card-title"></h1>
+        <p th:text="${post.body}" class="card-text"></p>
+        <div th:each="post : ${post.postImages}">
+            <h4 th:text="${post.imageTitle}"></h4>
+            <img th:src="${post.url}" alt="" style="height: 400px">
+        </div>
+        <th:block sec:authorize="isAuthenticated()" th:if="${post.user.id == #authentication.principal.id}">
+            <a th:href="@{'/posts/' + ${post.id} + '/edit'}" class="btn btn-info">Edit</a>
+            <form th:action="@{'/posts/' + ${id} + '/delete'}" method="post">
+                <button type="submit" class="btn btn-block btn-danger">Delete</button>
+            </form>
+        </th:block>
+        <div th:text="'Created by: ' + ${post.user.email}" class="card-footer">
+            Created by: UsersEmail
+        </div>
+    </div>
+</div>
+
+<th:block th:replace="fragments/footer :: main-footer"/>
+</body>
+</html>

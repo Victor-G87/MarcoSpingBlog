@@ -1,7 +1,10 @@
 package com.codeup.springblog.controllers;
 
+
+
 import Repository.PostRepository;
 import com.codeup.springblog.Post;
+import com.codeup.springblog.models.User;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,11 +16,11 @@ import java.util.ArrayList;
 public class PostController {
 
     private final PostRepository postDao;
-    private final com.codeup.blog.blog.repository.UserRepository userDao;
+    private final com.codeup.springblog.repositories.UserRepository usersDao;
 
-    public PostController(PostRepository postDao, com.codeup.blog.blog.repository.UserRepository userDao) {
+    public PostController(PostRepository postDao, com.codeup.springblog.repositories.UserRepository usersDao) {
         this.postDao = postDao;
-        this.userDao = userDao;
+        this.usersDao = usersDao;
     }
 
     @GetMapping("/posts")
@@ -75,6 +78,7 @@ public class PostController {
 
 
 }
+
 
 
 

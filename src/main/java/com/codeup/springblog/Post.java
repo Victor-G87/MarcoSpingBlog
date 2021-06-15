@@ -33,5 +33,6 @@ public class Post {
     private String title;
 
 
-
+    public void setBody(String body) {
+    }
 }
