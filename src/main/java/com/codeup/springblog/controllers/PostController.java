@@ -1,8 +1,7 @@
 package com.codeup.springblog.controllers;
 
-
-
 import Repository.PostRepository;
+import Repository.UserRepository;
 import com.codeup.springblog.Post;
 import com.codeup.springblog.models.User;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -10,15 +9,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-
 @Controller
 public class PostController {
 
     private final PostRepository postDao;
-    private final com.codeup.springblog.repositories.UserRepository usersDao;
+    private final UserRepository usersDao;
 
-    public PostController(PostRepository postDao, com.codeup.springblog.repositories.UserRepository usersDao) {
+    public PostController(PostRepository postDao, UserRepository usersDao) {
         this.postDao = postDao;
         this.usersDao = usersDao;
     }
