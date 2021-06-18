@@ -16,5 +16,17 @@
         <input type="submit" />
     </form>
 </div>
+
+<select multiple="multiple" th:field="${ad.categories}" class="form-control">
+    <option th:each="category: ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+</select>
+
+<!--        Idea Two: The Div Path -->
+
+<div th:each="category : ${categories}">
+    <label th:class="${'category' + category.getId()}">
+        <input name="interests" type="checkbox" th:field="*{categories}" th:value="${category.getId()}" th:text="${category.getName()}"/>
+    </label>
+</div>
 </body>
 </html>
